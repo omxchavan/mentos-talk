@@ -163,8 +163,8 @@ export default function RealtimeChat({ partnerId, partnerName }: RealtimeChatPro
                             >
                                 <div
                                     className={`max-w-[80%] px-4 py-3 ${isCurrentUser
-                                            ? 'chat-bubble-user'
-                                            : 'chat-bubble-other'
+                                        ? 'chat-bubble-user'
+                                        : 'chat-bubble-other'
                                         }`}
                                 >
                                     <p className="whitespace-pre-wrap break-words">
@@ -172,8 +172,8 @@ export default function RealtimeChat({ partnerId, partnerName }: RealtimeChatPro
                                     </p>
                                     <p
                                         className={`text-xs mt-1 ${isCurrentUser
-                                                ? 'text-white/70'
-                                                : 'text-muted-foreground'
+                                            ? 'text-black/60'
+                                            : 'text-muted-foreground'
                                             }`}
                                     >
                                         {formatRelativeTime(new Date(message.timestamp))}
@@ -200,8 +200,8 @@ export default function RealtimeChat({ partnerId, partnerName }: RealtimeChatPro
             </div>
 
             {/* Input Area */}
-            <div className="border-t border-border p-4">
-                <form onSubmit={handleSubmit} className="flex items-end gap-3">
+            <div className="chat-form-container">
+                <form onSubmit={handleSubmit} className="flex items-end gap-3 max-w-5xl mx-auto">
                     <div className="flex-1 relative">
                         <textarea
                             ref={inputRef}
@@ -217,7 +217,7 @@ export default function RealtimeChat({ partnerId, partnerName }: RealtimeChatPro
                     <button
                         type="submit"
                         disabled={!input.trim() || isLoading}
-                        className="btn-primary p-3 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        className="btn-primary p-3 rounded-xl disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
                         {isLoading ? (
                             <Loader2 className="w-5 h-5 animate-spin" />
@@ -226,7 +226,7 @@ export default function RealtimeChat({ partnerId, partnerName }: RealtimeChatPro
                         )}
                     </button>
                 </form>
-                <p className="text-xs text-muted-foreground mt-2 text-center">
+                <p className="text-xs text-white/40 mt-2 text-center">
                     Press Enter to send, Shift+Enter for new line
                 </p>
             </div>

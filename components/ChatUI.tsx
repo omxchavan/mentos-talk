@@ -79,13 +79,13 @@ export default function ChatUI({
                         >
                             <div
                                 className={`max-w-[80%] px-4 py-3 ${message.role === 'user'
-                                        ? 'chat-bubble-user'
-                                        : 'chat-bubble-other'
+                                    ? 'chat-bubble-user'
+                                    : 'chat-bubble-other'
                                     }`}
                             >
                                 <p className="whitespace-pre-wrap break-words">{message.content}</p>
                                 <p
-                                    className={`text-xs mt-1 ${message.role === 'user' ? 'text-white/70' : 'text-muted-foreground'
+                                    className={`text-xs mt-1 ${message.role === 'user' ? 'text-black/60' : 'text-muted-foreground'
                                         }`}
                                 >
                                     {formatRelativeTime(message.timestamp)}
@@ -111,8 +111,8 @@ export default function ChatUI({
             </div>
 
             {/* Input Area */}
-            <div className="border-t border-border p-4">
-                <form onSubmit={handleSubmit} className="flex items-end gap-3">
+            <div className="chat-form-container">
+                <form onSubmit={handleSubmit} className="flex items-end gap-3 max-w-5xl mx-auto">
                     <div className="flex-1 relative">
                         <textarea
                             ref={inputRef}
@@ -128,7 +128,7 @@ export default function ChatUI({
                     <button
                         type="submit"
                         disabled={!input.trim() || isLoading}
-                        className="btn-primary p-3 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        className="btn-primary p-3 rounded-xl disabled:opacity-30 disabled:cursor-not-allowed transition-all"
                     >
                         {isLoading ? (
                             <Loader2 className="w-5 h-5 animate-spin" />
@@ -137,7 +137,7 @@ export default function ChatUI({
                         )}
                     </button>
                 </form>
-                <p className="text-xs text-muted-foreground mt-2 text-center">
+                <p className="text-xs text-white/40 mt-2 text-center">
                     Press Enter to send, Shift+Enter for new line
                 </p>
             </div>

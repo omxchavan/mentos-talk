@@ -208,33 +208,40 @@ body {
   padding: 0.875rem 1.125rem;
   border-radius: 0.875rem;
   border: 2px solid var(--border);
-  background: var(--background);
-  color: var(--foreground);
+  background: #000000 !important;
+  color: #ffffff !important;
   font-size: 0.9375rem;
   font-weight: 400;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .input::placeholder {
-  color: var(--muted-foreground);
-  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .input:hover {
-  border-color: rgba(250, 204, 21, 0.4);
+  border-color: var(--primary);
 }
 
 .input:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.1);
-  background: #ffffff;
+  background: #000000 !important;
+  color: #ffffff !important;
 }
+
+.chat-form-container {
+  background: #000000;
+  border-top: 1px solid var(--border);
+  padding: 1rem;
+}
+
 
 /* Chat bubble styles */
 .chat-bubble-user {
   background: var(--gradient-primary);
-  color: #000000;
+  color: #000000 !important;
   border-radius: 1.25rem 1.25rem 0.375rem 1.25rem;
   box-shadow: var(--shadow-md);
   animation: slideInRight 0.3s ease-out;

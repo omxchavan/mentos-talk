@@ -196,7 +196,7 @@ export default function LandingPage() {
                     <p className="text-sm">Hi! I&apos;m your AI mentor. What would you like to learn today?</p>
                   </div>
                   <div className="chat-bubble-user p-3 ml-8">
-                    <p className="text-sm text-white">I want to become a full-stack developer</p>
+                    <p className="text-sm text-black">I want to become a full-stack developer</p>
                   </div>
                   <div className="chat-bubble-other p-3">
                     <p className="text-sm">Great choice! Let me create a personalized learning path for you...</p>
