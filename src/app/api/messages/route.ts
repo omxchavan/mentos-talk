@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@clerk/nextjs/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import { Message, User } from '@/models';
+import { pusherServer } from '@/lib/pusher';
 
 // GET - Get messages with a specific user
 export async function GET(request: NextRequest) {
@@ -82,16 +83,27 @@ export async function POST(request: NextRequest) {
             timestamp: new Date(),
         });
 
+        const messageData = {
+            id: message._id,
+            senderId: message.senderId,
+            receiverId: message.receiverId,
+            text: message.text,
+            timestamp: message.timestamp.toISOString(),
+            read: message.read,
+        };
+
+        // Trigger Pusher event for real-time message delivery
+        // Create a unique channel for this conversation (sorted IDs for consistency)
+        const channelId = [userId, receiverId].sort().join('-');
+        await pusherServer.trigger(
+            `private-chat-${channelId}`,
+            'new-message',
+            messageData
+        );
+
         return NextResponse.json({
             success: true,
-            data: {
-                id: message._id,
-                senderId: message.senderId,
-                receiverId: message.receiverId,
-                text: message.text,
-                timestamp: message.timestamp.toISOString(),
-                read: message.read,
-            },
+            data: messageData,
         }, { status: 201 });
     } catch (error) {
         console.error('Error sending message:', error);
