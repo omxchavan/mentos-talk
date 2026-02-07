@@ -62,18 +62,18 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 glass">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-white/10">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">M</span>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-hover flex items-center justify-center">
+              <span className="text-black font-bold text-lg">M</span>
             </div>
-            <span className="text-xl font-bold gradient-text">MentorConnect</span>
+            <span className="text-xl font-bold text-white">MentorConnect</span>
           </Link>
           <div className="flex items-center gap-4">
             <Link
               href="/sign-in"
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-white/70 hover:text-white transition-colors font-medium"
             >
               Sign In
             </Link>

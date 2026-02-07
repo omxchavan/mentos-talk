@@ -9,7 +9,7 @@ interface LoadingSpinnerProps {
 }
 
 const sizeClasses = {
-    sm: 'w-4 h-4',
+    sm: 'w-5 h-5',
     md: 'w-8 h-8',
     lg: 'w-12 h-12',
 };
@@ -21,14 +21,21 @@ export default function LoadingSpinner({
 }: LoadingSpinnerProps) {
     const content = (
         <div className="flex flex-col items-center justify-center gap-3">
-            <Loader2 className={`${sizeClasses[size]} animate-spin text-primary`} />
-            {text && <p className="text-muted-foreground text-sm">{text}</p>}
+            <div className="relative">
+                <Loader2
+                    className={`${sizeClasses[size]} text-primary`}
+                    style={{
+                        animation: 'spin 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite'
+                    }}
+                />
+            </div>
+            {text && <p className="text-muted-foreground text-sm font-medium">{text}</p>}
         </div>
     );
 
     if (fullScreen) {
         return (
-            <div className="fixed inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm z-50">
+            <div className="fixed inset-0 flex items-center justify-center bg-background/90 backdrop-blur-md z-50 animate-fadeIn">
                 {content}
             </div>
         );
